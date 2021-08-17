@@ -6,7 +6,7 @@ import {
     View,
 } from 'react-native';
 import NavBar from  './Home/NavBar';
-import DeviceList from './DeviceList';
+import DeviceList from './Devices';
 
 const App = () => {
     return (
