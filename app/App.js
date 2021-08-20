@@ -2,21 +2,27 @@ import React from 'react';
 import {
     SafeAreaView,
     StyleSheet,
-    Text,
-    View,
+    StatusBar
 } from 'react-native';
 import NavBar from  './Home/NavBar';
-import DeviceList from './Devices';
+import DevicesLoaded from './Devices';
+import { background } from './shared/colors';
 
 const App = () => {
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.content}>
+            <StatusBar backgroundColor={background} />
             <NavBar />
-            <DeviceList />
+            <DevicesLoaded />
         </SafeAreaView>
     );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    content: {
+        flex: 1,
+        backgroundColor: background
+    }
+});
 
 export default App;

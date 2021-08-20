@@ -4,13 +4,14 @@ import {
     Text,
     View,
 } from 'react-native';
-import { sharedStyles } from '../shared/styles';
+import sharedStyles from '../shared/styles';
+import { primaryTextColor } from '../shared/colors';
 
 const NavBar = () => {
     return (
         <View style={styles.content}>
             <View style={[styles.box, styles.center]}>
-                <Text>Oliver Test</Text>
+                <Text style={styles.title}>Oliver Test - by: Lucas Himelfarb</Text>
             </View>
         </View>
     );
@@ -25,6 +26,10 @@ const styles = StyleSheet.create({
     box: {
         flex: 1,
     },
+    title: {
+        color: primaryTextColor,
+        letterSpacing: 1
+    }
 });
 
 export default memo(NavBar);
