@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     SafeAreaView,
     StyleSheet,
@@ -7,8 +7,13 @@ import {
 import NavBar from  './Home/NavBar';
 import DevicesLoaded from './Devices';
 import colors from './shared/styles/colors';
+import { requestLocationPermission } from './shared/helpers/permissions';
 
 const App = () => {
+    useEffect(async () => {
+        await requestLocationPermission();
+    }, []);
+
     return (
         <SafeAreaView style={styles.content}>
             <StatusBar backgroundColor={colors.background} />

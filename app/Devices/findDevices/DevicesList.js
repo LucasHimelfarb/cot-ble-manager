@@ -27,13 +27,9 @@ const DeviceList = () => {
         if (selectedDevice) setOpenModal(true);
     }, [selectedDevice]);
 
-    useEffect(() => {
-        setLoading(false);
-    }, [selectedDevice]);
-
     const handleScan = () => {
         setLoading(true);
-        startScanner(setScannedDevices);
+        startScanner(setScannedDevices, setLoading);
     };
 
     const renderItem = ({ item }) => (<ScannedDeviceCard item={item} selectDevice={setSelectedDevice} />);
@@ -71,6 +67,8 @@ const DeviceList = () => {
         </>
     );
 
+    const renderFooterComponent = () => (null);
+
     return (
         <View style={styles.content}>
             <FlatList
@@ -81,7 +79,11 @@ const DeviceList = () => {
                 ItemSeparatorComponent={renderSeparator}
                 ListEmptyComponent={renderEmptyComponent}
                 ListHeaderComponent={renderHeaderComponent}
+                ListFooterComponent={renderFooterComponent}
             />
+            <View style={styles.centerEnd}>
+                <CustomText type={'secondary'}>{`Devices found: ${scannedDevices.length}`}</CustomText>
+            </View>
             <ConnectModal open={openModal} device={selectedDevice} showModal={setOpenModal} cleanSelectedDevice={setSelectedDevice} />
         </View>
     );
