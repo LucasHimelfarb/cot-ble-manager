@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import {
     StyleSheet,
-    Text,
     View,
     Image,
 } from 'react-native';
@@ -9,13 +8,14 @@ import commons from '../../shared/styles/commons';
 import sharedImages from '../../shared/images';
 import colors from '../../shared/styles/colors';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import CustomText from '../../shared/components/CustomText';
 
 const ListCard = ({ item, selectDevice }) => {
     return (
         <TouchableOpacity style={[styles.content, styles.row]} onPress={() => selectDevice(item)}>
             <View style={styles.leftBox}>
-                <Text style={styles.name} allowFontScaling={false}>{item.name || 'Unknown device'}</Text>
-                <Text style={styles.id}>{item.id}</Text>
+                <CustomText type={'principal'} style={styles.name}>{item.name || 'Unknown device'}</CustomText>
+                <CustomText type={'secondary'}>{item.id}</CustomText>
             </View>
             <View style={[styles.rightBox, styles.centerEnd]}>
                 <Image source={sharedImages.watch}  style={{ width: 32, height: 32 }} />
@@ -38,12 +38,6 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 17,
         color: colors.primary
-    },
-    id: {
-        fontSize: 12,
-        color: 'silver',
-        fontStyle: 'italic',
-
     }
 });
 

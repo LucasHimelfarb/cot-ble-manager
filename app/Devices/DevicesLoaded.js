@@ -5,7 +5,6 @@ import React, {
 } from 'react';
 import {
     View,
-    Text,
     StyleSheet,
     useWindowDimensions
 } from 'react-native';

@@ -4,7 +4,6 @@ import React, {
     useEffect
 } from 'react';
 import {
-    Text,
     View,
     FlatList,
     StyleSheet,
@@ -75,7 +74,7 @@ const DeviceList = () => {
     return (
         <View style={styles.content}>
             <FlatList
-                contentContainerStyle={{ flex: 1 }}
+                contentContainerStyle={{ flex: scannedDevices.length ? 0 : 1 }}
                 data={scannedDevices}
                 renderItem={renderItem}
                 keyExtractor={item => item.id}
