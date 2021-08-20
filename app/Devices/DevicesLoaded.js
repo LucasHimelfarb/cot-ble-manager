@@ -17,19 +17,15 @@ import commons from '../shared/styles/commons';
 import ScannedDevices from './findDevices/DevicesList';
 import CustomText from '../shared/components/CustomText';
 
+const FirstRoute = () => (<ScannedDevices />);
+
 const Devices = ({ }) => {
     const layout = useWindowDimensions();
 
     const [index, setIndex] = useState(0);
-    const [routes] = useState([
-        { key: 'first', title: 'Find devices' },
-        { key: 'second', title: 'My devices' },
-      ]);
+    const [routes] = useState([{ key: 'first', title: 'Find devices' }]);
 
-    const renderScene = SceneMap({
-        first: () => (<ScannedDevices />),
-        second: () => (null),
-    });
+    const renderScene = SceneMap({ first: FirstRoute });
 
     const renderTabBar = props => (
         <TabBar
@@ -48,6 +44,7 @@ const Devices = ({ }) => {
                 <CustomText type={'secondary'}>Scan nearby BLE devices and connect to them.</CustomText>
             </View>
             <TabView
+                lazy
                 style={{ shadowOpacity: 0, elevation: 0 }}
                 navigationState={{ index, routes }}
                 renderScene={renderScene}

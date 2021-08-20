@@ -10,8 +10,18 @@ import colors from '../../shared/styles/colors';
 import commons from '../../shared/styles/commons';
 import { manager } from '../../shared/libraries/bleManager';
 import CustomText from '../../shared/components/CustomText';
+import filter from 'lodash/filter';
 
-const ConnectModal = ({device, open, showModal, cleanSelectedDevice }) => {
+const ConnectModal = ({
+    device,
+    open,
+    showModal,
+    cleanSelectedDevice,
+    setScannedDevices,
+    scannedDevices,
+    setConnectedDevices,
+    connectedDevices
+}) => {
     const [title, setTitle] = useState('');
     const [loading, setLoading] = useState(false);
     const [connected, setConnected] = useState(false);
@@ -34,6 +44,11 @@ const ConnectModal = ({device, open, showModal, cleanSelectedDevice }) => {
 
             setLoading(false);
             setConnected(true);
+
+            const _scannedDevices = filter(scannedDevices, dev => dev.name !== device.name);
+            setScannedDevices(_scannedDevices);
+
+            setConnectedDevices([...connectedDevices, device]);
         }
         catch (error) {
             console.log(error);

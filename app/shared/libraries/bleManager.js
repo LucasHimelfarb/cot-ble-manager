@@ -6,11 +6,13 @@ export let manager = new BleManager();;
 let devices = [];
 
 export const startScanner = (setScannedDevices, setLoading) => {
+    devices = []
     setScannedDevices([]);
 
     manager.startDeviceScan(null, null, (error, device) => {
-        console.debug('Error de PLX: ', error);
-        if (error) return;
+        if (error || device.localName === null) return;
+
+        console.log('MIRA CHANGo: ', device);
 
         const validateDevice = _.filter(devices, d => d.id === device.id);
         if (!validateDevice.length) devices.push(deviceFormat(device));

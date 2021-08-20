@@ -19,6 +19,7 @@ import CustomText from '../../shared/components/CustomText';
 
 const DeviceList = () => {
     const [scannedDevices, setScannedDevices] = useState([]);
+    const [connectedDevices, setConnectedDevices] = useState([]);
     const [loading, setLoading] = useState(false);
     const [selectedDevice, setSelectedDevice] = useState(null);
     const [openModal, setOpenModal] = useState(false);
@@ -81,10 +82,26 @@ const DeviceList = () => {
                 ListHeaderComponent={renderHeaderComponent}
                 ListFooterComponent={renderFooterComponent}
             />
-            <View style={styles.centerEnd}>
-                <CustomText type={'secondary'}>{`Devices found: ${scannedDevices.length}`}</CustomText>
+
+            <View style={styles.row}>
+                <View>
+                    <CustomText type={'secondary'}>{`Connected devices: ${connectedDevices.length}`}</CustomText>
+                </View>
+                <View style={[styles.centerEnd, { flex: 1 }]}>
+                    <CustomText type={'secondary'}>{`Devices found: ${scannedDevices.length}`}</CustomText>
+                </View>
             </View>
-            <ConnectModal open={openModal} device={selectedDevice} showModal={setOpenModal} cleanSelectedDevice={setSelectedDevice} />
+
+            <ConnectModal
+                open={openModal}
+                device={selectedDevice}
+                showModal={setOpenModal}
+                cleanSelectedDevice={setSelectedDevice}
+                setScannedDevices={setScannedDevices}
+                scannedDevices={scannedDevices}
+                connectedDevices={connectedDevices}
+                setConnectedDevices={setConnectedDevices}
+            />
         </View>
     );
 };

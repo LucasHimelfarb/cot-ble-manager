@@ -14,9 +14,10 @@ export const requestLocationPermission = async () => {
             }
         );
 
-        console.log('Granted permission: ', granted);
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) return true;
+        else throw 'not-granted';
     }
     catch(error) {
-        console.log('Permissions error: ', error);
+        return false;
     };
 };
