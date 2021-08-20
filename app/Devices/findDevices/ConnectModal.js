@@ -6,10 +6,9 @@ import {
     TouchableOpacity,
     ActivityIndicator
 } from 'react-native';
-import sharedStyles from '../../shared/styles';
-import { primaryTextColor, background, secondaryTextcolor } from '../../shared/colors';
+import colors from '../../shared/styles/colors';
+import commons from '../../shared/styles/commons';
 import { manager } from '../../shared/libraries/bleManager';
-
 import CustomText from '../../shared/components/CustomText';
 
 const ConnectModal = ({device, open, showModal, cleanSelectedDevice }) => {
@@ -69,7 +68,7 @@ const ConnectModal = ({device, open, showModal, cleanSelectedDevice }) => {
                                     ?
                                         <CustomText type={'secondary'}>Confirm</CustomText>
                                     :
-                                        <ActivityIndicator size={20} color={primaryTextColor} />
+                                        <ActivityIndicator size={20} color={colors.primary} />
                                     }
                                 </TouchableOpacity>
                             </>
@@ -86,7 +85,7 @@ const ConnectModal = ({device, open, showModal, cleanSelectedDevice }) => {
 };
 
 const styles = StyleSheet.create({
-    ...sharedStyles,
+    ...commons,
     content: {
         flex: 1,
         backgroundColor: 'rgba(000,000,000,.7)',
@@ -95,7 +94,7 @@ const styles = StyleSheet.create({
     },
     modal: {
         width: '100%',
-        backgroundColor: background,
+        backgroundColor: colors.background,
         padding: 10,
         borderRadius: 6
     },

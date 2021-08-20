@@ -14,13 +14,9 @@ import {
     TabView,
     SceneMap,
 } from 'react-native-tab-view';
-import {
-    background,
-    primaryTextColor,
-    secondaryTextcolor
-} from '../shared/colors';
+import colors from '../shared/styles/colors';
 import { initializeBleManager } from '../shared/libraries/bleManager';
-import sharedStyles from '../shared/styles';
+import commons from '../shared/styles/commons';
 import ScannedDevices from './findDevices/DevicesList';
 import CustomText from '../shared/components/CustomText';
 
@@ -46,9 +42,9 @@ const Devices = ({ }) => {
         <TabBar
             {...props}
             style={{ shadowOpacity: 0, elevation: 0 }}
-            labelStyle={{ color: secondaryTextcolor }}
-            contentContainerStyle={{ backgroundColor: background }}
-            activeColor={primaryTextColor}
+            labelStyle={{ color: colors.secondary }}
+            contentContainerStyle={{ backgroundColor: colors.background }}
+            activeColor={colors.primary}
         />
     );
 
@@ -71,7 +67,7 @@ const Devices = ({ }) => {
 };
 
 const styles = StyleSheet.create({
-    ...sharedStyles,
+    ...commons,
     content: {
         flex: 1,
         padding: 10
@@ -81,12 +77,12 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         borderWidth: 1,
         borderRadius: 6,
-        borderColor: secondaryTextcolor,
+        borderColor: colors.secondary,
     },
     subTitle: {
         textAlign: 'left',
         fontSize: 13,
-        color: secondaryTextcolor
+        color: colors.secondary
     },
 });
 

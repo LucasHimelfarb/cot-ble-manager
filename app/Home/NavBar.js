@@ -4,8 +4,8 @@ import {
     Text,
     View,
 } from 'react-native';
-import sharedStyles from '../shared/styles';
-import { primaryTextColor } from '../shared/colors';
+import commons from '../shared/styles/commons';
+import colors from '../shared/styles/colors';
 
 const NavBar = () => {
     return (
@@ -18,7 +18,7 @@ const NavBar = () => {
 };
 
 const styles = StyleSheet.create({
-    ...sharedStyles,
+    ...commons,
     content: {
         height: 40,
         flexDirection: 'row'
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     title: {
-        color: primaryTextColor,
+        color: colors.primary,
         letterSpacing: 1
     }
 });

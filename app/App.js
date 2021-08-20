@@ -6,12 +6,12 @@ import {
 } from 'react-native';
 import NavBar from  './Home/NavBar';
 import DevicesLoaded from './Devices';
-import { background } from './shared/colors';
+import colors from './shared/styles/colors';
 
 const App = () => {
     return (
         <SafeAreaView style={styles.content}>
-            <StatusBar backgroundColor={background} />
+            <StatusBar backgroundColor={colors.background} />
             <NavBar />
             <DevicesLoaded />
         </SafeAreaView>
@@ -21,7 +21,7 @@ const App = () => {
 const styles = StyleSheet.create({
     content: {
         flex: 1,
-        backgroundColor: background
+        backgroundColor: colors.background
     }
 });
 

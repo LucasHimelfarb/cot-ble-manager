@@ -11,13 +11,12 @@ import {
     ActivityIndicator
 } from 'react-native';
 import { startScanner } from '../../shared/libraries/bleManager';
-import sharedStyles from '../../shared/styles';
+import commons from '../../shared/styles/commons';
 import ScannedDeviceCard from './ListCard';
 import ConnectModal from './ConnectModal';
-import { primaryTextColor, secondaryTextcolor } from '../../shared/colors';
+import colors from '../../shared/styles/colors';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import CustomText from '../../shared/components/CustomText';
-import colors from '../../shared/styles/colors';
 
 const DeviceList = () => {
     const [scannedDevices, setScannedDevices] = useState([]);
@@ -54,7 +53,7 @@ const DeviceList = () => {
                 </>
             :
                 <>
-                    <ActivityIndicator size={30} color={primaryTextColor} />
+                    <ActivityIndicator size={30} color={colors.primary} />
                     <CustomText type={'label'}>finding BLE devices</CustomText>
                 </>
             }
@@ -90,19 +89,19 @@ const DeviceList = () => {
 };
 
 const styles = StyleSheet.create({
-    ...sharedStyles,
+    ...commons,
     content: {
         borderWidth: 1,
         padding: 10,
         borderRadius: 6,
-        borderColor: secondaryTextcolor,
+        borderColor: colors.secondary,
         flex: 1,
         flexDirection: 'column',
         marginTop: 20
     },
     listSeparator: {
         height: .5,
-        backgroundColor: secondaryTextcolor,
+        backgroundColor: colors.secondary,
         marginHorizontal: 10,
         marginVertical: 10
     },
@@ -115,7 +114,7 @@ const styles = StyleSheet.create({
         padding: 20,
         borderRadius: 6,
         borderWidth: 1,
-        borderColor: primaryTextColor
+        borderColor: colors.primary
     },
     headerList: {
         padding: 20,

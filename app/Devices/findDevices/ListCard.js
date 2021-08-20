@@ -5,9 +5,9 @@ import {
     View,
     Image,
 } from 'react-native';
-import sharedStyles from '../../shared/styles';
+import commons from '../../shared/styles/commons';
 import sharedImages from '../../shared/images';
-import { primaryTextColor } from '../../shared/colors';
+import colors from '../../shared/styles/colors';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const ListCard = ({ item, selectDevice }) => {
@@ -25,7 +25,7 @@ const ListCard = ({ item, selectDevice }) => {
 };
 
 const styles = StyleSheet.create({
-    ...sharedStyles,
+    ...commons,
     content: {
         paddingHorizontal: 10,
     },
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: 17,
-        color: primaryTextColor
+        color: colors.primary
     },
     id: {
         fontSize: 12,
