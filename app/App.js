@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     SafeAreaView,
     StyleSheet,
-    Text,
-    View,
+    StatusBar
 } from 'react-native';
 import NavBar from  './Home/NavBar';
-import DeviceList from './Devices';
+import DevicesLoaded from './Devices';
+import colors from './shared/styles/colors';
+import { requestLocationPermission } from './shared/helpers/permissions';
 
 const App = () => {
+    useEffect(async () => {
+        await requestLocationPermission();
+    }, []);
+
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.content}>
+            <StatusBar backgroundColor={colors.background} />
             <NavBar />
-            <DeviceList />
+            <DevicesLoaded />
         </SafeAreaView>
     );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    content: {
+        flex: 1,
+        backgroundColor: colors.background
+    }
+});
 
 export default App;
