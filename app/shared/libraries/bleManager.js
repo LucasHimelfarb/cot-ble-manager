@@ -10,9 +10,9 @@ export const startScanner = (setScannedDevices, setLoading) => {
     setScannedDevices([]);
 
     manager.startDeviceScan(null, null, (error, device) => {
-        if (error || device.localName === null) return;
+        console.debug('Error BLEManager: ', error);
 
-        console.log('MIRA CHANGo: ', device);
+        if (error || device.localName === null) return;
 
         const validateDevice = _.filter(devices, d => d.id === device.id);
         if (!validateDevice.length) devices.push(deviceFormat(device));

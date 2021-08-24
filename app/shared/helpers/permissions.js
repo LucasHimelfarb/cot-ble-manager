@@ -5,7 +5,7 @@ import { PermissionsAndroid } from "react-native";
 export const requestLocationPermission = async () => {
     try {
         const granted = await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
             {
                 title: "Location Permission",
                 message: "App needs access to your location so you can scan device",
